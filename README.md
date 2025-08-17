@@ -1,14 +1,18 @@
 # Electron Demo Project
 
-An example of a simple Electron project
+An example of a simple Electron project.
+
+## Resources
+
+- [Electron](https://www.electronjs.org/docs/latest/)
+- [Code Signing with Electron Forge](https://www.electronforge.io/guides/code-signing)
 
 ## TODO
 
 ### Next
 
 - [ ] Create distributable for MacOS, Windows and Linux in single command
-- [ ] Test signature in MacOS
 
 ### In the future
 
-- [ ] Create build process (with signature)
+- [ ] Add code signing
