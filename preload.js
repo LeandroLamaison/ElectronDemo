@@ -4,5 +4,8 @@ contextBridge.exposeInMainWorld('versions', {
     node: () => process.versions.node,
     chrome: () => process.versions.chrome,
     electron: () => process.versions.electron,
-    renderTime: () => ipcRenderer.invoke('renderTime'),
-})  
+})
+
+contextBridge.exposeInMainWorld('todo', {
+    todos: () => ipcRenderer.invoke('todos')
+})

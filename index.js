@@ -16,16 +16,12 @@ const createWindow = () => {
     window.loadFile('index.html')
 }
 
-
-
 app.whenReady().then(() => {
     createWindow()
 
-    let counter = 0;
-    setInterval(() => {
-        counter++
-    }, 1)
-    ipcMain.handle('renderTime', () => counter)
+    const todos = [{ text: 'TODO 1' }, { text: 'TODO 2'} ]
+    ipcMain.handle('todos', () => todos)
+
 
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
