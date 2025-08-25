@@ -21,7 +21,8 @@ app.whenReady().then(() => {
 
     const todos = [{ text: 'TODO 1' }, { text: 'TODO 2'} ]
     ipcMain.handle('todos', () => todos)
-
+    ipcMain.on('add-todo', (_, todo) => todos.push(todo))
+    ipcMain.on('remove-todo', () => todos.pop())
 
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {

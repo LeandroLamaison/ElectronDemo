@@ -7,5 +7,7 @@ contextBridge.exposeInMainWorld('versions', {
 })
 
 contextBridge.exposeInMainWorld('todo', {
-    todos: () => ipcRenderer.invoke('todos')
+    todos: () => ipcRenderer.invoke('todos'),
+    add: (todo) => ipcRenderer.send('add-todo', todo),
+    remove: () => ipcRenderer.send('remove-todo')
 })
