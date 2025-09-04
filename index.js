@@ -15,6 +15,9 @@ const createWindow = () => {
     })
 
     window.loadFile('index.html')
+    if (process.env.NODE_ENV === 'development') {
+        window.webContents.openDevTools()
+    }
 }
 
 app.whenReady().then(() => {
