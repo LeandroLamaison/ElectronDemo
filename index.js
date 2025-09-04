@@ -1,7 +1,7 @@
 const path = require('path')
 const { app, BrowserWindow, ipcMain } = require('electron')
 const { updateElectronApp } = require('update-electron-app')
-const { injectStore } = require('./store')
+const { injectDatabase } = require('./database')
 
 updateElectronApp()
 
@@ -20,7 +20,7 @@ const createWindow = () => {
 app.whenReady().then(() => {
     createWindow()
 
-    injectStore(ipcMain)
+    injectDatabase(ipcMain)
 
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {

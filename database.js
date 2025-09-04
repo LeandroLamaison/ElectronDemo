@@ -1,7 +1,12 @@
 const { Database } = require("sqlite3")
+const path = require('path')
 
-function injectStore(ipcMain) {
-    const database = new Database('./db.sqlite3', err => {
+const dbPath = process.env.NODE_ENV === 'development' 
+    ? './db.sqlite3' 
+    : path.join(process.resourcesPath, './db.sqlite3')
+
+function injectDatabase(ipcMain) {
+    const database = new Database(dbPath, err => {
         if (err) {
             throw err
         }
@@ -35,4 +40,4 @@ function injectStore(ipcMain) {
     })
 }
 
-module.exports = { injectStore }
+module.exports = { injectDatabase }
