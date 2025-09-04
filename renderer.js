@@ -26,6 +26,8 @@ removeBtn.onclick = async function removeTodo() {
     renderTodos()
 }
 
-versionInfoEl.innerText = `This app is using Chrome v${versions.chrome()}, Node v${versions.node()} and Electron v${versions.electron()}.`
+appInfo.version().then(version => {
+    versionInfoEl.innerText = `(v${version})`
+})
 
 renderTodos()

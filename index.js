@@ -30,6 +30,11 @@ app.whenReady().then(() => {
             createWindow()
         }
     })
+
+    ipcMain.handle('get-app-version', () => {
+        return app.getVersion();
+    });
+
 })
 
 app.on('window-all-closed', () => {

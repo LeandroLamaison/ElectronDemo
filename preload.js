@@ -1,9 +1,7 @@
-const { contextBridge, ipcRenderer } = require('electron')
+const { contextBridge, ipcRenderer, app } = require('electron')
 
-contextBridge.exposeInMainWorld('versions', {
-    node: () => process.versions.node,
-    chrome: () => process.versions.chrome,
-    electron: () => process.versions.electron,
+contextBridge.exposeInMainWorld('appInfo', {
+    version: () => ipcRenderer.invoke('get-app-version')
 })
 
 contextBridge.exposeInMainWorld('todo', {
