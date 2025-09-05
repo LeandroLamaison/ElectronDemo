@@ -1,8 +1,9 @@
 const path = require('path')
+const { app } = require('electron')
 
 const filename = process.env.NODE_ENV === 'development' 
-    ? './db.sqlite3' 
-    : path.join(process.resourcesPath, './db.sqlite3')
+  ? './db.sqlite3' 
+  : path.join(app.getPath('userData'), 'db.sqlite3');
 
 module.exports = {
     development: {
