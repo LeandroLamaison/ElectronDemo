@@ -1,7 +1,8 @@
 const path = require('path')
 const { app, BrowserWindow, ipcMain } = require('electron')
 const { updateElectronApp } = require('update-electron-app')
-const { injectDatabase } = require('./database')
+const { runMigrations } = require('./database')
+const { createTodoHandlers } = require('./todos')
 
 updateElectronApp()
 
@@ -21,9 +22,11 @@ const createWindow = () => {
 }
 
 app.whenReady().then(() => {
+    runMigrations()
+
     createWindow()
 
-    injectDatabase(ipcMain)
+    createTodoHandlers(ipcMain)
 
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
@@ -34,7 +37,6 @@ app.whenReady().then(() => {
     ipcMain.handle('get-app-version', () => {
         return app.getVersion();
     });
-
 })
 
 app.on('window-all-closed', () => {
