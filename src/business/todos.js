@@ -1,4 +1,4 @@
-const { database } = require('./database')
+const { database } = require('../infra/database')
 
 function createTodoHandlers(ipcMain) {
     ipcMain.handle('todos', () => {

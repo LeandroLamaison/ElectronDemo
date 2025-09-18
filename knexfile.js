@@ -13,7 +13,7 @@ module.exports = {
       },
       useNullAsDefault: true, // SQLite requirement
       migrations: {
-        directory: './migrations'
+        directory: './src/infra/database/migrations'
       }
     }
   };

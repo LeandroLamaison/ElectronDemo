@@ -1,8 +1,8 @@
 const path = require('path')
 const { app, BrowserWindow, ipcMain } = require('electron')
 const { updateElectronApp } = require('update-electron-app')
-const { runMigrations } = require('./database')
-const { createTodoHandlers } = require('./todos')
+const { runMigrations } = require('./infra/database')
+const { createTodoHandlers } = require('./business/todos')
 
 updateElectronApp()
 
@@ -11,11 +11,11 @@ const createWindow = () => {
         width: 800,
         height: 600,
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
+            preload: path.join(__dirname, 'frontend/preload.js')
         }
     })
 
-    window.loadFile('index.html')
+    window.loadFile('src/frontend/index.html')
     if (process.env.NODE_ENV === 'development') {
         window.webContents.openDevTools()
     }

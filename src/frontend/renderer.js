@@ -30,4 +30,4 @@ appInfo.version().then(version => {
     versionInfoEl.innerText = `(v${version})`
 })
 
-renderTodos()
+renderTodos()  

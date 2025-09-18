@@ -1,4 +1,4 @@
-const { contextBridge, ipcRenderer, app } = require('electron')
+const { contextBridge, ipcRenderer } = require('electron')
 
 contextBridge.exposeInMainWorld('appInfo', {
     version: () => ipcRenderer.invoke('get-app-version')
