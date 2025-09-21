@@ -13,7 +13,6 @@ An example of a simple Electron project.
 
 ### Next
 
-- [] Add Vue
 - [] Improve user interface
 - [] Add user configuration (dark mode)
 - [] Add due date on todos
