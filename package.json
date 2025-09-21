@@ -1,13 +1,13 @@
 {
   "name": "electron-demo",
   "version": "1.0.7",
-  "main": "src/index.js",
+  "main": "src/main.js",
   "repository": "https://github.com/LeandroLamaison/ElectronDemo",
   "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish"
+    "start": "npx vite build && electron-forge start",
+    "package": "npx vite build && electron-forge package",
+    "make": "npx vite build && electron-forge make",
+    "publish": "npx vite build && electron-forge publish"
   },
   "keywords": [],
   "author": "",
@@ -23,13 +23,16 @@
     "@electron-forge/plugin-fuses": "^7.8.3",
     "@electron-forge/publisher-github": "^7.8.3",
     "@electron/fuses": "^1.8.0",
+    "@vitejs/plugin-vue": "^6.0.1",
     "dotenv": "^17.2.1",
-    "electron": "^37.2.5"
+    "electron": "^37.2.5",
+    "vite": "^7.1.6"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1",
     "knex": "^3.1.0",
     "sqlite3": "^5.1.7",
-    "update-electron-app": "^3.1.1"
+    "update-electron-app": "^3.1.1",
+    "vue": "^3.5.21"
   }
 }
