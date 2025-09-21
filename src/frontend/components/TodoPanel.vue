@@ -2,7 +2,7 @@
 import { useTodos } from '../composables/todos';
 
 export default {
-    name: 'ToDoPanel',
+    name: 'TodoPanel',
     setup() {
         return {
             ...useTodos()

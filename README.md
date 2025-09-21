@@ -8,6 +8,7 @@ An example of a simple Electron project.
 - [Code Signing with Electron Forge](https://www.electronforge.io/guides/code-signing)
 - [Build and release pipeline example](https://github.com/electron/fiddle/blob/main/.circleci/config.yml)
 - [Forge configuration example](https://github.com/electron/fiddle/blob/main/forge.config.ts)
+- [Design] (https://mdbootstrap.com/docs/standard/extended/to-do-list/)
 
 ## TODO
 
