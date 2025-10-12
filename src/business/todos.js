@@ -15,6 +15,13 @@ function createTodoHandlers(ipcMain) {
         .delete()
         .catch(err => console.error(err))
     })
+
+    ipcMain.on('check-todo', async (_, { id, value }) => {
+        await database('todos')
+            .where('id', id)
+            .update('done', value)
+            .catch(err => console.error(err))
+    })
 }
 
 module.exports = { createTodoHandlers }

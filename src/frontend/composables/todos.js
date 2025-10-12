@@ -15,8 +15,8 @@ export function useTodos() {
         await loadTodos()
     }
 
-    async function removeTodo() {
-        await window.todo.remove()
+    async function checkTodo(id, value) {
+        await window.todo.check({ id, value })
         await loadTodos()
     }
 
@@ -29,6 +29,7 @@ export function useTodos() {
         isLoading,
         loadTodos,
         addTodo,
-        removeTodo
+        removeTodo,
+        checkTodo
     }
 }
