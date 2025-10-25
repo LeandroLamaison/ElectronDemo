@@ -10,7 +10,6 @@ export default {
     },
     setup({ modelValue }, { emit }) {
       function handleToggle() {
-        console.log('TOGGLE', modelValue)
         emit('update:modelValue', !modelValue)
       }
 

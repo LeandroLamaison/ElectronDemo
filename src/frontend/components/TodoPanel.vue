@@ -28,7 +28,6 @@ export default {
         }
 
         function handleCheckTodo(todoID, value) {
-            console.log('HANDLE', todoID, value)
             checkTodo(todoID, value)
         }
 
