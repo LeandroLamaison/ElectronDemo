@@ -8,10 +8,13 @@ export function useTodos() {
         todos.value = await window.todo.todos()
     }
 
-    async function addTodo() {
-        const len = await window.todo.todos().then(res => res.length)
-        const newTodo = { text: `TODO ${len+1}` }
-        await window.todo.add(newTodo)
+    async function addTodo(text) {
+        await window.todo.add({ text })
+        await loadTodos()
+    }
+
+    async function removeTodo(id) {
+        await window.todo.remove(id)
         await loadTodos()
     }
 

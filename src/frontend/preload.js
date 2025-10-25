@@ -7,6 +7,6 @@ contextBridge.exposeInMainWorld('appInfo', {
 contextBridge.exposeInMainWorld('todo', {
     todos: () => ipcRenderer.invoke('todos'),
     add: (todo) => ipcRenderer.send('add-todo', todo),
-    remove: () => ipcRenderer.send('remove-todo'),
+    remove: (id) => ipcRenderer.send('remove-todo', id),
     check: ({ id, value }) => ipcRenderer.send('check-todo', { id, value })
 })

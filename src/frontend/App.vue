@@ -4,7 +4,7 @@ import TodoPanel from './components/TodoPanel.vue';
 
 export default {
     name: 'ElectronDemoApp',
-    components: {TodoPanel},
+    components: { TodoPanel },
     setup() {
         return {...useAppInfo()}
     }
@@ -21,7 +21,7 @@ export default {
     </div>
 </template>
 
-<style type="css">
+<style type="css" scoped>
 .main-wrapper {
     height: 100vh;
     display: flex;
@@ -38,10 +38,12 @@ export default {
     height: 60vh;
     background-color: #424242;
     border-radius: 16px;
-    padding: 24px 18px 12px 40px;
+    padding: 24px;
 }
 
 .title {
+    margin-top: 12px;
+    margin-left: 36px;
     font-size: 16px;
 }
 
