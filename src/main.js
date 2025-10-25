@@ -4,6 +4,7 @@ const { app, BrowserWindow, ipcMain } = require('electron')
 const { updateElectronApp } = require('update-electron-app')
 const { runMigrations } = require('./infra/database')
 const { createTodoHandlers } = require('./business/todos')
+const { createPreferencesHandlers } = require('./business/preferences')
 
 updateElectronApp()
 
@@ -28,6 +29,7 @@ app.whenReady().then(() => {
     createWindow()
 
     createTodoHandlers(ipcMain)
+    createPreferencesHandlers(ipcMain)
 
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
