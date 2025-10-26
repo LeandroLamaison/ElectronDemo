@@ -1,10 +1,11 @@
 <script>
 import { useAppInfo } from './composables/appInfo';
 import TodoPanel from './components/TodoPanel.vue';
+import ConfigButton from './components/ConfigButton.vue';
 
 export default {
     name: 'ElectronDemoApp',
-    components: { TodoPanel },
+    components: { TodoPanel, ConfigButton },
     setup() {
         return {...useAppInfo()}
     }
@@ -14,6 +15,7 @@ export default {
 <template>
     <div class="main-wrapper">
         <div class="main-card">
+            <!-- <ConfigButton class="config-btn"/> -->
             <h1 class="title">Electron Demo</h1>
             <TodoPanel />
             <div class="version"> v{{ version }} </div>
@@ -39,7 +41,14 @@ export default {
     background-color: #424242;
     border-radius: 16px;
     padding: 24px;
+    position: relative;
 }
+
+/* .config-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+} */
 
 .title {
     margin-top: 12px;
