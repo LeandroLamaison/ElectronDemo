@@ -5,7 +5,7 @@ export default {
         click: null
     },
     setup(_, { emit }) {
-        function doNothing() {}
+        function doNothing() { }
 
         function handleClick() {
             emit('click')
@@ -20,12 +20,7 @@ export default {
 </script>
 
 <template>
-    <button 
-        v-bind="$attrs" 
-        class="button" 
-        @click="doNothing" 
-        @click.prevent="handleClick"
-    >
+    <button v-bind="$attrs" class="button" @click="doNothing" @click.prevent="handleClick">
         <slot />
     </button>
 </template>
@@ -46,6 +41,4 @@ export default {
 .button:hover {
     opacity: 0.7;
 }
-
-
 </style>x

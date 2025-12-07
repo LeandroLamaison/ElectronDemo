@@ -9,8 +9,8 @@ import RemoveTodoBtn from './RemoveTodoBtn.vue'
 export default {
     name: 'TodoPanel',
     components: {
-        Textarea, 
-        Button, 
+        Textarea,
+        Button,
         Checkbox,
         RemoveTodoBtn,
     },
@@ -51,15 +51,12 @@ export default {
         <template v-for="todo in todos" :key="todo.id">
             <li class="todo-item">
                 <div>
-                    <Checkbox 
-                        :modelValue="todo.done" 
-                        @update:modelValue="(value) => handleCheckTodo(todo.id, value)" 
-                    />
+                    <Checkbox :modelValue="todo.done" @update:modelValue="(value) => handleCheckTodo(todo.id, value)" />
                     {{ todo.text }}
                 </div>
-                <RemoveTodoBtn @click="handleRemoveTodo(todo.id)"/>
+                <RemoveTodoBtn @click="handleRemoveTodo(todo.id)" />
             </li>
-            <hr class="separator"/>
+            <hr class="separator" />
         </template>
     </ul>
 </template>
@@ -87,28 +84,28 @@ export default {
 }
 
 .todo-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 8px;
-  padding: 4px 8px;
-  box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+    padding: 4px 8px;
+    box-sizing: border-box;
 }
 
-.todo-item > div {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.todo-item>div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .separator {
     height: 0px;
-    border:none;
+    border: none;
     border-top: 1px solid #555;
 }
 </style>

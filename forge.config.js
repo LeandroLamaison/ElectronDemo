@@ -1,46 +1,45 @@
-require('dotenv').config()
-const { FusesPlugin } = require('@electron-forge/plugin-fuses');
-const { FuseV1Options, FuseVersion } = require('@electron/fuses');
+require("dotenv").config();
+const { FusesPlugin } = require("@electron-forge/plugin-fuses");
+const { FuseV1Options, FuseVersion } = require("@electron/fuses");
 
-
-const signatureOptions = {}
-if(process.env.OS === 'MacOS' && process.env.APPLE_ID) {
-  signatureOptions.osxSign = {}
+const signatureOptions = {};
+if (process.env.OS === "MacOS" && process.env.APPLE_ID) {
+  signatureOptions.osxSign = {};
   signatureOptions.osxNotarize = {
-    tool: 'notarytool',
+    tool: "notarytool",
     appleId: process.env.APPLE_ID,
     appleIdPassword: process.env.APPLE_PASSWORD,
-    teamId: process.env.APPLE_TEAM_ID
-  }
+    teamId: process.env.APPLE_TEAM_ID,
+  };
 }
 
 module.exports = {
   packagerConfig: {
     asar: true,
-    ...signatureOptions
+    ...signatureOptions,
   },
   rebuildConfig: {},
   makers: [
     {
-      name: '@electron-forge/maker-squirrel',
+      name: "@electron-forge/maker-squirrel",
       config: {},
     },
     {
-      name: '@electron-forge/maker-zip',
-      platforms: ['darwin'],
+      name: "@electron-forge/maker-zip",
+      platforms: ["darwin"],
     },
     {
-      name: '@electron-forge/maker-deb',
+      name: "@electron-forge/maker-deb",
       config: {},
     },
     {
-      name: '@electron-forge/maker-rpm',
+      name: "@electron-forge/maker-rpm",
       config: {},
     },
   ],
   plugins: [
     {
-      name: '@electron-forge/plugin-auto-unpack-natives',
+      name: "@electron-forge/plugin-auto-unpack-natives",
       config: {},
     },
     // Fuses are used to enable/disable various Electron functionality
@@ -56,16 +55,16 @@ module.exports = {
     }),
   ],
   publishers: [
-    {      
-      name: '@electron-forge/publisher-github',
+    {
+      name: "@electron-forge/publisher-github",
       config: {
         repository: {
-          owner: 'LeandroLamaison',
-          name: 'ElectronDemo'
+          owner: "LeandroLamaison",
+          name: "ElectronDemo",
         },
         prerelease: false,
-        draft: true
-      }
-    }
-  ]
+        draft: true,
+      },
+    },
+  ],
 };

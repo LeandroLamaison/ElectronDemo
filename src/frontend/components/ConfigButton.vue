@@ -16,7 +16,7 @@ export default {
 </script>
 
 <template>
-    <span class="config-btn" @click="handleClick"/>
+    <span class="config-btn" @click="handleClick" />
 </template>
 
 <style type="css" scoped>

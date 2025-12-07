@@ -1,32 +1,27 @@
 <script>
 
 export default {
-    name: 'Checkbox',
-    props: {
-      modelValue: {
-        type: Boolean,
-        default: false
-      }
-    },
-    setup({ modelValue }, { emit }) {
-      function handleToggle() {
-        emit('update:modelValue', !modelValue)
-      }
-
-      return {
-        handleToggle
-      }
+  name: 'Checkbox',
+  props: {
+    modelValue: {
+      type: Boolean,
+      default: false
     }
+  },
+  setup({ modelValue }, { emit }) {
+    function handleToggle() {
+      emit('update:modelValue', !modelValue)
+    }
+
+    return {
+      handleToggle
+    }
+  }
 }
 </script>
 
 <template>
- <input 
-  :checked="modelValue"
-  type="checkbox" 
-  class="checkbox"
-  @click="handleToggle"
-/>
+  <input :checked="modelValue" type="checkbox" class="checkbox" @click="handleToggle" />
 </template>
 
 <style type="css" scoped>
