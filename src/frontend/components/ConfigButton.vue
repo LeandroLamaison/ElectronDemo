@@ -1,11 +1,22 @@
 <script>
+import { useRouter } from 'vue-router'
+
 export default {
-    name: 'ConfigButton'
+    name: 'ConfigButton',
+    setup() {
+        const router = useRouter()
+
+        function handleClick() {
+            router.push('/preferences')
+        }
+
+        return {handleClick}
+    }
 }
 </script>
 
 <template>
-    <span class="config-btn" />
+    <span class="config-btn" @click="handleClick"/>
 </template>
 
 <style type="css" scoped>
