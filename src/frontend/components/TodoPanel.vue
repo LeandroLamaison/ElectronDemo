@@ -74,13 +74,13 @@ export default {
 
 .todo-list {
     list-style-type: none;
+    height: 100%;
     width: 100%;
     box-sizing: border-box;
     padding: 0;
     margin: 16px 0 0 0;
-    overflow-y: scroll;
+    overflow-y: overlay;
     overflow-x: visible;
-
 }
 
 .todo-item {

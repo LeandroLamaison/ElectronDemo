@@ -37,6 +37,7 @@ export default {
     border-radius: 16px;
     padding: 24px;
     position: relative;
+    overflow: hidden;
 }
 
 .version {
