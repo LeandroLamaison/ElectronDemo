@@ -36,5 +36,8 @@
     "update-electron-app": "^3.1.2",
     "vue": "^3.5.29",
     "vue-router": "^4.6.3"
+  },
+  "overrides": {
+    "@electron/fuses": "^2.1.0"
   }
 }
