@@ -22,7 +22,7 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.11.1",
     "@electron-forge/plugin-fuses": "^7.11.1",
     "@electron-forge/publisher-github": "^7.11.1",
-    "@electron/fuses": "^1.8.0",
+    "@electron/fuses": "^2.1.0",
     "@vitejs/plugin-vue": "^6.0.4",
     "electron": "^40.8.0",
     "node-abi": "^4.26.0",
