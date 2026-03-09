@@ -30,7 +30,6 @@ export default {
     background-color: #4285f4;
     border-radius: 6px;
     padding: 8px 16px;
-    color: white;
     box-shadow: none;
     outline: none;
     border: none;
@@ -40,5 +39,13 @@ export default {
 
 .button:hover {
     opacity: 0.7;
+}
+
+.main-wrapper.dark .button {
+    color: white;
+}
+
+.main-wrapper.white .button {
+    color: lightgray;
 }
 </style>x

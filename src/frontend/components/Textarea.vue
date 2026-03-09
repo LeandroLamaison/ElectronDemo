@@ -24,12 +24,20 @@ export default {
 
 <style type="css" scoped>
 .textarea {
-    border: 1px solid lightgrey;
     background-color: transparent;
     border-radius: 6px;
     width: 100%;
     padding: 8px;
-    color: lightgray;
     resize: none;
+}
+
+.main-wrapper.dark .textarea {
+    border: 1px solid lightgrey;
+    color: lightgrey;
+}
+
+.main-wrapper.white .textarea {
+    border: 1px solid black;
+    color: black;
 }
 </style>

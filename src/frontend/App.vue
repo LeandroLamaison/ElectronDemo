@@ -13,7 +13,7 @@ export default {
 </script>
 
 <template>
-    <div class="main-wrapper">
+    <div class="main-wrapper dark">
         <div id="app" class="main-card">
             <router-view />
         </div>
@@ -33,11 +33,25 @@ export default {
 .main-card {
     width: 60vw;
     height: 60vh;
-    background-color: #424242;
     border-radius: 16px;
     padding: 24px;
     position: relative;
     overflow: hidden;
+}
+
+.main-wrapper.dark {
+    color: white;
+}
+.main-wrapper.white {
+    color: black;
+}
+
+.main-wrapper.white .main-card {
+    background-color: lightgray;
+}
+
+.main-wrapper.dark .main-card {
+    background-color: #424242;
 }
 
 .version {
