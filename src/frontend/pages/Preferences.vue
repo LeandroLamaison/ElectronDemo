@@ -1,30 +1,26 @@
 <script>
 import { useRouter } from 'vue-router';
+import BackButton from '../components/BackButton.vue'
 
 export default {
     name: 'PreferencesPage',
+    components: { BackButton },
     setup() {
-        const router = useRouter()
-
-        function handleClick() {
-            router.push('/')
-        }
-
-        return { handleClick }
     }
 }
 </script>
 
 <template>
-    <div class="page-wrapper">
-        <h1 class="title">Preferences</h1>
-        <button @click="handleClick">Go Back</button>
-    </div>
+    <BackButton class="back-btn" />
+    <h1 class="title">Preferences</h1>
 </template>
 
 <style type="css" scoped>
-.page-wrapper {
-    position: relative;
+
+.back-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 
 .title {
