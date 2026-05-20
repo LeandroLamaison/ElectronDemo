@@ -9,6 +9,7 @@ export function usePreferences() {
 
   async function changePreferences(newValue) {
     await window.preferences.change(newValue);
+    await new Promise((resolve) => setTimeout(resolve, 200));
     await loadPreferences();
   }
 

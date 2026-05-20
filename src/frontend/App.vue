@@ -2,20 +2,31 @@
 import { useAppInfo } from './composables/appInfo';
 import TodoPanel from './components/TodoPanel.vue';
 import ConfigButton from './components/ConfigButton.vue';
+import { usePreferences } from './composables/preferences';
 
 export default {
     name: 'ElectronDemoApp',
     components: { TodoPanel, ConfigButton },
     setup() {
-        return { ...useAppInfo() }
+        const { preferences, changePreferences } = usePreferences()
+
+        function handleChangePreferences(newPreferences) {
+            changePreferences(newPreferences)
+        }
+
+        return { 
+            ...useAppInfo(),
+            preferences,
+            handleChangePreferences
+        }
     }
 }
 </script>
 
 <template>
-    <div class="main-wrapper dark">
+    <div class="main-wrapper" :class="[preferences.layoutMode]">
         <div id="app" class="main-card">
-            <router-view />
+            <router-view @change-preferences="handleChangePreferences"/>
         </div>
         <div class="version"> v{{ version }} </div>
     </div>
@@ -42,11 +53,11 @@ export default {
 .main-wrapper.dark {
     color: white;
 }
-.main-wrapper.white {
+.main-wrapper.light {
     color: black;
 }
 
-.main-wrapper.white .main-card {
+.main-wrapper.light .main-card {
     background-color: lightgray;
 }
 

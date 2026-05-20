@@ -40,7 +40,7 @@ export default {
 .main-wrapper.dark .checkbox {
   border: 2px solid lightgrey;
 }
-.main-wrapper.white .checkbox {
+.main-wrapper.light .checkbox {
   border: 2px solid black;
 }
 
@@ -63,7 +63,7 @@ export default {
 .main-wrapper.dark .checkbox:checked::after {
   border: solid white;
 }
-.main-wrapper.white .checkbox:checked::after {
+.main-wrapper.light .checkbox:checked::after {
   border: solid black;
 }
 </style>

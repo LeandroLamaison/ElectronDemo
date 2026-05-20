@@ -36,7 +36,7 @@ export default {
     color: lightgrey;
 }
 
-.main-wrapper.white .textarea {
+.main-wrapper.light .textarea {
     border: 1px solid black;
     color: black;
 }

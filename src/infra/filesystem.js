@@ -16,6 +16,10 @@ async function loadFileContent(filename) {
     const data = JSON.parse(fileContent);
     return data;
   } catch (err) {
+    if (err?.code === "ENOENT") {
+      writeFile(filepath, "{}");
+      return;
+    }
     console.warn(err);
     return {};
   }

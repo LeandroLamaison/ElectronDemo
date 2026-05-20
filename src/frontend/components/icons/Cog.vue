@@ -5,7 +5,7 @@
 </template>
 
 <style>
- .main-wrapper.white .cog--icon {
+ .main-wrapper.light .cog--icon {
     fill: black
  }
 </style>

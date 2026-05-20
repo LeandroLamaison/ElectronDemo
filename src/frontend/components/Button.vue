@@ -45,7 +45,7 @@ export default {
     color: white;
 }
 
-.main-wrapper.white .button {
+.main-wrapper.light .button {
     color: lightgray;
 }
 </style>x
