@@ -5,6 +5,10 @@ export function usePreferences() {
 
   async function loadPreferences() {
     preferences.value = await window.preferences.preferences();
+
+    if (!preferences.value.layoutMode) {
+      preferences.value.layoutMode = "light";
+    }
   }
 
   async function changePreferences(newValue) {
