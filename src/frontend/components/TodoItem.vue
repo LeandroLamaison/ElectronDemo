@@ -7,7 +7,7 @@ export default {
     name: 'TodoItem',
     components: {
         Checkbox,
-         RemoveTodoBtn
+        RemoveTodoBtn
     },
     props: {
         id: {
@@ -28,7 +28,7 @@ export default {
         }
     },
     emits: ['check', 'remove'],
-    setup({ dueDate }, { emit }) {
+    setup({ dueDate, done }, { emit }) {
         function handleCheckTodo(value) {
             emit('check', value)
         }
@@ -44,10 +44,18 @@ export default {
             return 'Due on ' + new Date(dueDate).toLocaleDateString()
         })
 
+        const isDue = computed(() => {
+            if(!dueDate || done) {
+                return false
+            }
+            return new Date(dueDate) < new Date()
+        })
+
         return {
             handleCheckTodo,
             handleRemoveTodo,
-            dueDateFormatted
+            dueDateFormatted,
+            isDue
         }
     }
 }
@@ -59,7 +67,7 @@ export default {
             <Checkbox :modelValue="done" @update:modelValue="handleCheckTodo" />
             {{ text }}
         </div>
-        <div class="due-date">
+        <div class="due-date" :class="{ due: isDue }">
             {{ dueDateFormatted }}
         </div>
         <RemoveTodoBtn @click="handleRemoveTodo" />
@@ -88,6 +96,10 @@ export default {
     white-space: nowrap;
 }
 
+.todo-item .due-date.due {
+    color: lightcoral;
+}
+
 .todo-item .due-date {
     color: gray;
     font-size: 10px;
@@ -96,4 +108,5 @@ export default {
     flex-direction: column;
     justify-content: flex-end;
 }
+
 </style>
