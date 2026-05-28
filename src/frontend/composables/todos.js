@@ -8,8 +8,8 @@ export function useTodos() {
     todos.value = await window.todo.todos();
   }
 
-  async function addTodo(text) {
-    await window.todo.add({ text });
+  async function addTodo({ text, dueDate }) {
+    await window.todo.add({ text, dueDate });
     await loadTodos();
   }
 

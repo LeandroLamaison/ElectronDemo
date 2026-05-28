@@ -3,7 +3,7 @@ const { database } = require("../infra/database");
 function createTodoHandlers(ipcMain) {
   ipcMain.handle("todos", () => {
     return database("todos")
-      .select(["id", "text", "done"])
+      .select(["id", "text", "done", "due_date as dueDate"])
       .orderBy("id", "desc")
       .then((todos) => {
         return todos.map((todo) => ({
@@ -16,7 +16,7 @@ function createTodoHandlers(ipcMain) {
 
   ipcMain.on("add-todo", async (_, todo) => {
     await database("todos")
-      .insert({ text: todo.text })
+      .insert({ text: todo.text, due_date: todo.dueDate })
       .catch((err) => console.error(err));
   });
 

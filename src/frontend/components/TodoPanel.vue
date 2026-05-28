@@ -2,25 +2,35 @@
 import { ref } from 'vue'
 import { useTodos } from '../composables/todos';
 import Textarea from './Textarea.vue'
+import DateInput from './DateInput.vue'
 import Button from './Button.vue'
-import Checkbox from './Checkbox.vue'
-import RemoveTodoBtn from './RemoveTodoBtn.vue'
+import TodoItem from './TodoItem.vue';
 
 export default {
     name: 'TodoPanel',
     components: {
         Textarea,
+        DateInput,
         Button,
-        Checkbox,
-        RemoveTodoBtn,
+        TodoItem
     },
     setup() {
         const { todos, addTodo, removeTodo, checkTodo } = useTodos()
         const newTodoText = ref(null)
+        const newTodoDueDate = ref(null)
 
         function handleAddTodo() {
-            addTodo(newTodoText.value)
+            if(!newTodoText.value) {
+                return
+            }
+
+            const newTodo = { 
+                text: newTodoText.value,
+                dueDate: newTodoDueDate.value
+            }
+            addTodo(newTodo)
             newTodoText.value = null
+            newTodoDueDate = null
         }
 
         function handleRemoveTodo(todoID) {
@@ -34,6 +44,7 @@ export default {
         return {
             todos,
             newTodoText,
+            newTodoDueDate,
             handleAddTodo,
             handleRemoveTodo,
             handleCheckTodo
@@ -45,17 +56,18 @@ export default {
 <template>
     <div class="add-todo-panel">
         <Textarea v-model="newTodoText" placeholder="What do you need to do?" />
+        <DateInput v-model="newTodoDueDate" placeholder="When is it due?" />
         <Button class="add-todo-btn" :disabled="!newTodoText" @click="handleAddTodo"> Add </Button>
     </div>
     <ul class="todo-list">
         <template v-for="todo in todos" :key="todo.id">
-            <li class="todo-item">
-                <div>
-                    <Checkbox :modelValue="todo.done" @update:modelValue="(value) => handleCheckTodo(todo.id, value)" />
-                    {{ todo.text }}
-                </div>
-                <RemoveTodoBtn @click="handleRemoveTodo(todo.id)" />
-            </li>
+            <TodoItem 
+                :text="todo.text" 
+                :done="todo.done"
+                :dueDate="todo.dueDate" 
+                @check="(value) => handleCheckTodo(todo.id, value)" 
+                @remove="handleRemoveTodo(todo.id)"
+            />
             <hr class="separator" />
         </template>
     </ul>
@@ -68,7 +80,7 @@ export default {
     justify-content: space-between;
 }
 
-.add-todo-btn {
+.add-todo-panel * {
     margin-left: 16px;
 }
 
@@ -81,26 +93,6 @@ export default {
     margin: 16px 0 0 0;
     overflow-y: overlay;
     overflow-x: visible;
-}
-
-.todo-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    gap: 8px;
-    padding: 4px 8px;
-    box-sizing: border-box;
-}
-
-.todo-item>div {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .separator {
