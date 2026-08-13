@@ -29,23 +29,27 @@ app.whenReady().then(() => {
 
   app.setLoginItemSettings({
     openAtLogin: true,
-    // args: ["--hidden"],
+    args: ["--hidden"],
   });
 
   runMigrations();
+  createTodoHandlers(ipcMain);
+  createPreferencesHandlers(ipcMain);
+  createBackgroundProcesses();
 
   if (!startHidden) {
     createWindow();
-    createTodoHandlers(ipcMain);
-    createPreferencesHandlers(ipcMain);
   }
 
-  createBackgroundProcesses();
-
   app.on("activate", () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
+    const existingWindow = BrowserWindow.getAllWindows()[0];
+    if (!existingWindow) {
       createWindow();
+      return;
     }
+
+    existingWindow.show();
+    existingWindow.focus();
   });
 
   ipcMain.handle("get-app-version", () => {
