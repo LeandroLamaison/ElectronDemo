@@ -25,12 +25,20 @@ const createWindow = () => {
 };
 
 app.whenReady().then(() => {
+  const startHidden = process.argv.includes("--hidden");
+
+  app.setLoginItemSettings({
+    openAtLogin: true,
+    // args: ["--hidden"],
+  });
+
   runMigrations();
 
-  createWindow();
-
-  createTodoHandlers(ipcMain);
-  createPreferencesHandlers(ipcMain);
+  if (!startHidden) {
+    createWindow();
+    createTodoHandlers(ipcMain);
+    createPreferencesHandlers(ipcMain);
+  }
 
   createBackgroundProcesses();
 
