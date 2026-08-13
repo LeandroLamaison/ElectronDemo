@@ -3,8 +3,8 @@ const path = require("path");
 const { app, BrowserWindow, ipcMain } = require("electron");
 const { updateElectronApp } = require("update-electron-app");
 const { runMigrations } = require("./infra/database");
-const { createTodoHandlers } = require("./business/todos");
-const { createPreferencesHandlers } = require("./business/preferences");
+const { createTodoHandlers } = require("./handlers/todos");
+const { createPreferencesHandlers } = require("./handlers/preferences");
 
 updateElectronApp();
 
