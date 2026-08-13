@@ -5,6 +5,7 @@ const { updateElectronApp } = require("update-electron-app");
 const { runMigrations } = require("./infra/database");
 const { createTodoHandlers } = require("./handlers/todos");
 const { createPreferencesHandlers } = require("./handlers/preferences");
+const { createBackgroundProcesses } = require("./background");
 
 updateElectronApp();
 
@@ -30,6 +31,8 @@ app.whenReady().then(() => {
 
   createTodoHandlers(ipcMain);
   createPreferencesHandlers(ipcMain);
+
+  createBackgroundProcesses();
 
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
