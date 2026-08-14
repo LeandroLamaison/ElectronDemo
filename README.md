@@ -12,10 +12,6 @@ An example of a simple Electron project.
 
 ## TODO
 
-### Next
-
-- [] Add background process for notifiyng due todos
-
 ### In the future
 
 - [ ] Add code signing
